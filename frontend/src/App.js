@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component, useState } from 'react';
+// import logo from './logo.svg';
+import Feature from './containers/Feature'
 
-function App() {
-  return <div>
-
-  </div>;
+const App = () => {
+  return(
+    <Feature/>
+  )
 }
 
 export default App;
