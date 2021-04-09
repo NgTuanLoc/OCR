@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
+import video from "../../video/writing.mp4";
 
 const Header = () => {
   return (
@@ -9,14 +10,19 @@ const Header = () => {
         <Navbar />
         <div class="banner">
           <div class="container">
-            <h1>scroll project</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos
-              neque sunt in? Id, necessitatibus quos quisquam distinctio
-              laudantium fugiat?
-            </p>
-            <a href="#" class="scroll-link btn btn-white">
-              explore tours
+            <video
+              controls={true}
+              muted={true}
+              autoPlay={true}
+              loop={true}
+              class="video-container"
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+            <h1>Handwriting Regconition</h1>
+            <p>The Power Of Writing</p>
+            <a href="#howitworks" class="scroll-link btn btn-white">
+              explore more
             </a>
           </div>
         </div>
