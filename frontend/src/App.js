@@ -1,11 +1,21 @@
-import React, { Component, useState } from 'react';
-// import logo from './logo.svg';
-import Feature from './containers/Feature'
+import React from "react";
+
+import Header from "./containers/Header/Header";
+import About from "./containers/About/About";
+import HowItWorks from "./containers/HowItWorks/HowItWorks";
+import Ocr from "./containers/Ocr/Ocr";
+import Footer from "./containers/Footer/Footer";
 
 const App = () => {
-  return(
-    <Feature/>
-  )
-}
+  return (
+    <React.Fragment>
+      <Header />
+      <About />
+      <HowItWorks />
+      <Ocr />
+      <Footer />
+    </React.Fragment>
+  );
+};
 
 export default App;
