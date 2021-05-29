@@ -1,15 +1,23 @@
 .App {
+  width: 50%;
+  height: 80%;
   text-align: center;
 }
 
+img {
+  text-align: center;
+  width: 50vw;
+  height: 63vh;
+}
+/* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
 }
 
 .App-header {
-  background-color: #fff;
-  min-height: 100vh;
+  background-color: rgb(241, 245, 248);
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,5 +32,4 @@
 
 .App-link {
   color: #000;
-}
-
+} */

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { links, social } from "./data";
 import classes from "./Navbar.module.css";
-import logo from "./logo.svg";
+import logo from "./favicon.svg";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -47,7 +47,9 @@ const Navbar = () => {
             const { id, url, icon } = socialIcon;
             return (
               <li key={id}>
-                <a href={url}>{icon}</a>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {icon}
+                </a>
               </li>
             );
           })}

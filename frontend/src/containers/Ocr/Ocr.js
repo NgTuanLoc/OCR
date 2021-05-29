@@ -1,3 +1,5 @@
+import Feature from "../../components/Feature/Feature";
+
 const Ocr = () => {
   return (
     <section id="ocr" class="section">
@@ -6,6 +8,7 @@ const Ocr = () => {
           Our <span>Project</span>
         </h2>
       </div>
+      <Feature />
     </section>
   );
 };

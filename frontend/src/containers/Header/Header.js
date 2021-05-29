@@ -11,11 +11,13 @@ const Header = () => {
         <div class="banner">
           <div class="container">
             <video
-              controls={true}
+              controls={false}
+
               muted={true}
               autoPlay={true}
               loop={true}
               class="video-container"
+
             >
               <source src={video} type="video/mp4" />
             </video>

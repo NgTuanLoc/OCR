@@ -8,8 +8,15 @@ from torchvision import models, transforms
 from torch.autograd import Variable
 import torchvision.models as models
 
-
+import matplotlib.pyplot as plt
 from PIL import Image
+
+from vietocr.tool.predictor import Predictor
+from vietocr.tool.config import Cfg
+
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 
 import requests
 
@@ -62,56 +69,27 @@ def upload_file():
 	return json.dumps(predicted_image_class)
 
 def predict_img(img_path):
+	config = Cfg.load_config_from_name('vgg_transformer')
 
-	# Available model archtectures = 
-	#'alexnet','densenet121', 'densenet169', 'densenet201', 'densenet161','resnet18', 
-	#'resnet34', 'resnet50', 'resnet101', 'resnet152','inceptionv3','squeezenet1_0', 'squeezenet1_1',
-    #'vgg11', 'vgg11_bn', 'vgg13', 'vgg13_bn', 'vgg16', 'vgg16_bn','vgg19_bn', 'vgg19'
-	
+	# config['weights'] = './weights/transformerocr.pth'
+	config['weights'] = 'https://drive.google.com/uc?id=13327Y1tz1ohsm5YZMyXVMPIOjoOA0OaA'
+	config['cnn']['pretrained']=False
+	config['device'] = 'cpu'
+	config['predictor']['beamsearch']=False
 
-	# Choose which model achrictecture to use from list above
-	architecture = models.squeezenet1_0(pretrained=True)
-	architecture.eval()
-
-	# Normalization according to https://pytorch.org/docs/0.2.0/torchvision/transforms.html#torchvision.transforms.Normalize
-	# Example seen at https://github.com/pytorch/examples/blob/42e5b996718797e45c46a25c55b031e6768f8440/imagenet/main.py#L89-L101
-	normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-	                                     std=[0.229, 0.224, 0.225])
-	    
-	# Preprocessing according to https://pytorch.org/tutorials/beginner/data_loading_tutorial.html
-	# Example seen at https://github.com/pytorch/examples/blob/42e5b996718797e45c46a25c55b031e6768f8440/imagenet/main.py#L89-L101
-
-	preprocess = transforms.Compose([
-	   transforms.Resize(256),
-	   transforms.CenterCrop(224),
-	   transforms.ToTensor(),
-	   normalize
-	])
-
-	# Path to uploaded image
-	path_img = img_path
-
-	# Read uploaded image
-	read_img = Image.open(path_img)
-
-	# Convert image to RGB if it is a .png
-	if path_img.endswith('.png'):
-	    read_img = read_img.convert('RGB')
-
-	img_tensor = preprocess(read_img)
-	img_tensor.unsqueeze_(0)
-	img_variable = Variable(img_tensor)
-
-	# Predict the image
-	outputs = architecture(img_variable)
-
-	# Couple the ImageNet label to the predicted class
-	labels = {int(key):value for (key, value)
-	          in json_classes.items()}
-	print("\n Answer: ",labels[outputs.data.numpy().argmax()])
+	detector = Predictor(config)
 
 
-	return labels[outputs.data.numpy().argmax()]
+	# img = './sample/test2.jpg'
+	img = Image.open(img_path)
+	# img = Image.open('./test/test1.jpg')
+	# plt.imshow(img)
+	s = detector.predict(img)
+
+	print("Predict text", s)
+
+
+	return s
 
 
 if __name__ == "__main__":

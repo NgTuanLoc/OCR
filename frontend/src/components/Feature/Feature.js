@@ -6,7 +6,7 @@ import axios from "axios";
 const Feature = () => {
   const [previewImage, setPreviewImage] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const [imagePrediction, setImagePrediction] = useState("hello");
+  const [imagePrediction, setImagePrediction] = useState("");
 
   const generatePreviewImage = (file, callback) => {
     const reader = new FileReader();
@@ -51,30 +51,20 @@ const Feature = () => {
 
           {/* Button for choosing an image */}
           <div>
-            <input type="file" name="file" onChange={handleChange} />
+            <input type="file" name="file" onChange={handleChange} className='btn'/>
           </div>
 
           {/* Button for sending image to backend */}
           <div>
-            <input type="submit" onClick={uploadHandler} />
+            <input type="submit" onClick={uploadHandler} className='btn'/>
           </div>
 
           {/* Field for previewing the chosen image */}
-          <div>
-            {previewImage && (
-              <img
-                height='200'
-                alt=""
-                src={previewImage}
-              />
-            )}
-          </div>
+          <div>{previewImage && <img alt="inputimg" src={previewImage} />}</div>
 
           {/* Text for model prediction */}
           <div>
-            {imagePrediction && (
-              <p>The model predicted: {imagePrediction}</p>
-            )}
+            {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
           </div>
         </div>
       </header>
