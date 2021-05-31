@@ -45,29 +45,33 @@ const Feature = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="App-upload">
+      <div className="container__feature">
+        <div className="container--uploading">
           <p>Upload an image for classification</p>
-
           {/* Button for choosing an image */}
           <div>
-            <input type="file" name="file" onChange={handleChange} className='btn'/>
+            <input
+              type="file"
+              name="file"
+              onChange={handleChange}
+              className="btn"
+            />
           </div>
 
           {/* Button for sending image to backend */}
           <div>
-            <input type="submit" onClick={uploadHandler} className='btn'/>
+            <input type="submit" onClick={uploadHandler} className="btn" />
           </div>
 
           {/* Field for previewing the chosen image */}
           <div>{previewImage && <img alt="inputimg" src={previewImage} />}</div>
-
-          {/* Text for model prediction */}
-          <div>
-            {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
-          </div>
         </div>
-      </header>
+
+        {/* Text for model prediction */}
+        <div className="container--predicted">
+          {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
+        </div>
+      </div>
     </div>
   );
 };

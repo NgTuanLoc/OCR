@@ -4,10 +4,6 @@ from werkzeug.utils import secure_filename
 import os
 import json
 
-from torchvision import models, transforms
-from torch.autograd import Variable
-import torchvision.models as models
-
 import matplotlib.pyplot as plt
 from PIL import Image
 
@@ -80,10 +76,10 @@ def predict_img(img_path):
 	detector = Predictor(config)
 
 
-	# img = './sample/test2.jpg'
+
 	img = Image.open(img_path)
-	# img = Image.open('./test/test1.jpg')
-	# plt.imshow(img)
+
+
 	s = detector.predict(img)
 
 	print("Predict text", s)

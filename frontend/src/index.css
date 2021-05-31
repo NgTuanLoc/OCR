@@ -328,11 +328,11 @@ Video
 }
 
 .container h1 {
-  color: var(--clr-white);
+  color: var(--clr-primary-1);
   text-transform: uppercase;
 }
 .container p {
-  color: var(--clr-white);
+  color: var(--clr-primary-1);
   max-width: 25rem;
   margin: 0 auto;
   margin-bottom: 1.25rem;
