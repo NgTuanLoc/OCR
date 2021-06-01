@@ -8,7 +8,7 @@ img {
   /* text-align: center;
   width: 50vw;
   height: 63vh; */
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .container__feature {

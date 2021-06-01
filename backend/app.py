@@ -4,11 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import json
 
-import matplotlib.pyplot as plt
-from PIL import Image
-
-from vietocr.tool.predictor import Predictor
-from vietocr.tool.config import Cfg
+from ocr.ocr import save_file, predict
 
 import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
@@ -20,8 +16,8 @@ import requests
 class_labels = 'imagenet_classes.json'
 
 # Read the json
-with open('imagenet_classes.json', 'r') as fr:
-	json_classes = json.loads(fr.read())
+# with open('imagenet_classes.json', 'r') as fr:
+# 	json_classes = json.loads(fr.read())
 
 app = Flask(__name__)
 
@@ -65,27 +61,13 @@ def upload_file():
 	return json.dumps(predicted_image_class)
 
 def predict_img(img_path):
-	config = Cfg.load_config_from_name('vgg_transformer')
+	output = './test'
+	lines = predict('data/img.png', output)
+	print(img_path)
+	print("out", lines)
+	save_file(lines)
 
-	# config['weights'] = './weights/transformerocr.pth'
-	config['weights'] = 'https://drive.google.com/uc?id=13327Y1tz1ohsm5YZMyXVMPIOjoOA0OaA'
-	config['cnn']['pretrained']=False
-	config['device'] = 'cpu'
-	config['predictor']['beamsearch']=False
-
-	detector = Predictor(config)
-
-
-
-	img = Image.open(img_path)
-
-
-	s = detector.predict(img)
-
-	print("Predict text", s)
-
-
-	return s
+	return lines
 
 
 if __name__ == "__main__":
