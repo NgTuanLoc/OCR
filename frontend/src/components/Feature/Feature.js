@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// import Result from "../../../../backend/result/result.txt";
 import "./Feature.css";
 import axios from "axios";
 
@@ -37,40 +37,45 @@ const Feature = () => {
       data = res.data;
       setImagePrediction(data);
       let t1 = performance.now();
+      console.log(data);
       console.log(
         "The time it took to predict the image " + (t1 - t0) + " milliseconds."
       );
     });
   };
 
+  
+
   return (
-    <div className="App">
-      <div className="container__feature">
-        <div className="container--uploading">
-          <p>Upload an image for classification</p>
-          {/* Button for choosing an image */}
-          <div>
-            <input
-              type="file"
-              name="file"
-              onChange={handleChange}
-              className="btn"
-            />
-          </div>
-
-          {/* Button for sending image to backend */}
-          <div>
-            <input type="submit" onClick={uploadHandler} className="btn" />
-          </div>
-
-          {/* Field for previewing the chosen image */}
-          <div>{previewImage && <img alt="inputimg" src={previewImage} />}</div>
+    <div className="container__feature">
+      <div className="container--uploading">
+        <p>Upload an image for classification</p>
+        {/* Button for choosing an image */}
+        <div>
+          <input
+            type="file"
+            name="file"
+            onChange={handleChange}
+            className="btn"
+          />
         </div>
 
-        {/* Text for model prediction */}
-        <div className="container--predicted">
-          {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
+        {/* Button for sending image to backend */}
+        <div>
+          <input type="submit" onClick={uploadHandler} className="btn" />
         </div>
+
+        {/* Field for previewing the chosen image */}
+        <div>
+          {previewImage && (
+            <img alt="inputimg" src={previewImage} className="previewImage" />
+          )}
+        </div>
+      </div>
+
+      {/* Text for model prediction */}
+      <div className="container--predicted">
+        {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
       </div>
     </div>
   );
