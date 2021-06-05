@@ -44,8 +44,6 @@ const Feature = () => {
     });
   };
 
-  
-
   return (
     <div className="container__feature">
       <div className="container--uploading">
@@ -59,23 +57,24 @@ const Feature = () => {
             className="btn"
           />
         </div>
+      </div>
 
-        {/* Button for sending image to backend */}
-        <div>
-          <input type="submit" onClick={uploadHandler} className="btn" />
-        </div>
+      {/* Button for sending image to backend */}
+      <div>
+        <input type="submit" onClick={uploadHandler} className="btn" />
+      </div>
 
+      <div className="container--ocr">
         {/* Field for previewing the chosen image */}
-        <div>
+        <div className="container--image ">
           {previewImage && (
             <img alt="inputimg" src={previewImage} className="previewImage" />
           )}
         </div>
-      </div>
-
-      {/* Text for model prediction */}
-      <div className="container--predicted">
-        {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
+        {/* Text for model prediction */}
+        <div className="container--predicted ">
+          {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
+        </div>
       </div>
     </div>
   );

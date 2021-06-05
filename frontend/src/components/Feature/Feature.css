@@ -1,8 +1,4 @@
 .container__feature {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -10,20 +6,33 @@
 /* display: flex;
   flex-wrap: wrap;
   flex-direction: row; */
- 
-
-.previewImage {
-  /* text-align: center;
-  width: 50vw;
-  height: 63vh; */
-  object-fit: contain;
+.container--ocr {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  margin-top: 2rem;
+  height: 70%;
 }
-
 
 .container--uploading {
   /* text-align: center; */
+  text-align: center;
 }
 
+/* .container--image{
+
+} */
+
 .container--predicted {
+  max-height: 50%;
+  max-width: 50%;
   align-self: center;
+}
+
+.previewImage {
+  max-height: 90%;
+  max-width: 90%;
+  /* transform: translate (-50%, -50%); */
+  object-fit: contain;
 }
