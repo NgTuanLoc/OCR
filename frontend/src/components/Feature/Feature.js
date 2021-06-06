@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Result from "../../../../backend/result/result.txt";
+import Result from "../../result/result.txt";
 import "./Feature.css";
 import axios from "axios";
 
@@ -45,8 +45,8 @@ const Feature = () => {
   };
 
   return (
-    <div className="container__feature">
-      <div className="container--uploading">
+    <div className="container--feature">
+      <div className="container--feature__col container--feature__uploading">
         <p>Upload an image for classification</p>
         {/* Button for choosing an image */}
         <div>
@@ -57,24 +57,25 @@ const Feature = () => {
             className="btn"
           />
         </div>
-      </div>
 
-      {/* Button for sending image to backend */}
-      <div>
-        <input type="submit" onClick={uploadHandler} className="btn" />
-      </div>
-
-      <div className="container--ocr">
+        {/* Button for sending image to backend */}
+        <div>
+          <input type="submit" onClick={uploadHandler} className="btn" />
+        </div>
         {/* Field for previewing the chosen image */}
-        <div className="container--image ">
+        <div className="container--image">
           {previewImage && (
             <img alt="inputimg" src={previewImage} className="previewImage" />
           )}
         </div>
-        {/* Text for model prediction */}
-        <div className="container--predicted ">
-          {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
-        </div>
+      </div>
+      {/* Text for model prediction */}
+      <div className="container--feature__col container--feature__predicted ">
+        {imagePrediction && <p>The model predicted: {imagePrediction}</p> && (
+          <a href={Result} download="result.txt" className="btn">
+            Click to download
+          </a>
+        )}
       </div>
     </div>
   );

@@ -33,11 +33,11 @@ def predict(input_path, output_path):
             s = detector.predict(img)
             print(path, s)
             lines.append(s)
-    # remove_file('./test')
+    remove_file('./test')
     return lines
 
-def save_file(lines):
-    with open('./result/result.txt', 'w') as f:
+def save_file(path, lines):
+    with open(path, 'w') as f:
         for line in reversed(lines): 
             f.write(line)
             f.write('\n')

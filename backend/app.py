@@ -65,7 +65,8 @@ def predict_img(img_path):
 	lines = predict('data/img.png', output)
 	print(img_path)
 	print("out", lines)
-	save_file(lines)
+	save_file('./result/result.txt', lines)
+	save_file('../frontend/src/result/result.txt', lines)
 
 	return lines
 
