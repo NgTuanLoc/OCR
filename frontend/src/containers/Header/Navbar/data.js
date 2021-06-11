@@ -13,7 +13,7 @@ export const links = [
   {
     id: 3,
     url: "#howitworks",
-    text: "How It Works",
+    text: "Write It By Yourself",
   },
   {
     id: 4,

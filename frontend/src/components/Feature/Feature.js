@@ -47,7 +47,7 @@ const Feature = () => {
   return (
     <div className="container--feature">
       <div className="container--feature__col container--feature__uploading">
-        <p>Upload an image for classification</p>
+        <p>Upload Your Writting</p>
         {/* Button for choosing an image */}
         <div>
           <input
