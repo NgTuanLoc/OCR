@@ -15,11 +15,11 @@ export const links = [
     url: "#howitworks",
     text: "Write It Yourself",
   },
-  {
-    id: 4,
-    url: "#about",
-    text: "Result",
-  },
+  // {
+  //   id: 4,
+  //   url: "#about",
+  //   text: "Result",
+  // },
 ];
 
 export const social = [

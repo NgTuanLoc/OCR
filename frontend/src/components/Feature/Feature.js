@@ -77,6 +77,9 @@ const Feature = () => {
           </a>
         )}
       </div>
+      <div>
+        {imagePrediction && <p>The model predicted: {imagePrediction}</p>}
+      </div>
     </div>
   );
 };

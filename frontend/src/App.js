@@ -12,7 +12,7 @@ const App = () => {
       <Header />
       <Ocr />
       <HowItWorks />
-      <About />
+      {/* <About /> */}
       <Footer />
     </React.Fragment>
   );
