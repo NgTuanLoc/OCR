@@ -10,9 +10,9 @@ const App = () => {
   return (
     <React.Fragment>
       <Header />
-      <About />
-      <HowItWorks />
       <Ocr />
+      <HowItWorks />
+      <About />
       <Footer />
     </React.Fragment>
   );

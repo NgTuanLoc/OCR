@@ -38,6 +38,6 @@ def predict(input_path, output_path):
 
 def save_file(path, lines):
     with open(path, 'w') as f:
-        for line in reversed(lines): 
+        for line in lines: 
             f.write(line)
             f.write('\n')

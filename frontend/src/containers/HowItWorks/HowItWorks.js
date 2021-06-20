@@ -5,7 +5,7 @@ const HowItWorks = () => {
     <section id="howitworks" class="section">
       <div class="title">
         <h2>
-          Write It <span>By Yourself</span>
+          Write It <span>Yourself</span>
         </h2>
       </div>
       <div className="howitworks--canvas">

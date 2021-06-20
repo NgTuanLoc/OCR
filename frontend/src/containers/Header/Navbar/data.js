@@ -7,18 +7,18 @@ export const links = [
   },
   {
     id: 2,
-    url: "#about",
-    text: "about",
+    url: "#ocr",
+    text: "OCR",
   },
   {
     id: 3,
     url: "#howitworks",
-    text: "Write It By Yourself",
+    text: "Write It Yourself",
   },
   {
     id: 4,
-    url: "#ocr",
-    text: "OCR",
+    url: "#about",
+    text: "Result",
   },
 ];
 

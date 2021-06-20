@@ -4,10 +4,9 @@ import "./Draw.css";
 import { exportComponentAsJPEG } from "react-component-export-image";
 
 const Draw = () => {
-  // const [width, setWidth] = useState(2000);
-  // const [height, setheight] = useState(2000);
   const [brushRadius, setBrushRadius] = useState(15);
   const [lazyRadius, setLazyRadius] = useState(1);
+  const [hideUI, setHideUI] = useState(true);
   const refCanvas = useRef();
 
   const clearCanvasHandle = () => {
@@ -21,28 +20,12 @@ const Draw = () => {
     }
   };
 
+  const hideUIHandle = () => {
+    setHideUI(!hideUI);
+  };
+
   return (
     <Fragment>
-      {/* <div
-        style={{
-          margin: "0rem 2rem 2rem 2rem",
-        }}
-      >
-        <label>Brush-Radius:</label>
-        <input
-          type="number"
-          value={brushRadius}
-          onChange={(e) => setBrushRadius(parseInt(e.target.value, 10))}
-        />
-
-        <label>Lazy-Radius:</label>
-        <input
-          type="number"
-          value={lazyRadius}
-          onChange={(e) => setLazyRadius(parseInt(e.target.value, 10))}
-        />
-      </div> */}
-
       <button
         onClick={clearCanvasHandle}
         className="btn"
@@ -60,6 +43,15 @@ const Draw = () => {
         }}
       >
         undo
+      </button>
+      <button
+        onClick={hideUIHandle}
+        className="btn"
+        style={{
+          marginRight: "2rem",
+        }}
+      >
+        UI Element
       </button>
       <button
         onClick={() => exportComponentAsJPEG(refCanvas, { fileName: "result" })}
@@ -99,13 +91,14 @@ const Draw = () => {
 
       <div className="canvas">
         <CanvasDraw
-          hideInterface
+          hideInterface={hideUI}
           lazyRadius={lazyRadius}
           brushRadius={brushRadius}
           hideGrid
-          canvasWidth="1359px"
+          canvasWidth="1390px"
           canvasHeight="500px"
           ref={refCanvas}
+          brushColor="red"
         />
       </div>
     </Fragment>
