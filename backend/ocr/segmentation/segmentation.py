@@ -37,21 +37,19 @@ def segment(input_path, output_path):
     max_width, max_height = image[y:y+h, x:x+w].shape[0], image[y:y+h, x:x+w].shape[1]
     valid_img = 0
 
-    print(max_height)
-    print(max_width)
     for i, ctr in enumerate(sorted_ctrs):
         # Get bounding box
         x, y, w, h = cv2.boundingRect(ctr)
         # Getting ROI
         roi = image[y:y+h, x:x+w]
         width, height = roi.shape[0], roi.shape[1]
-        print(i, width)
-        print(i, height)
+        # print(i, width)
+        # print(i, height)
         
         
         if(width>=max_width*0.1 and height>=max_height*0.8):
             # show ROI   
-            cv2.imwrite('{0}/image{1}.jpg'.format(output_path, valid_img), roi)
+            cv2.imwrite('{0}/img_transformer{1}.jpg'.format(output_path, valid_img), roi)
             valid_img += 1
     return valid_img
 

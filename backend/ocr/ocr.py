@@ -24,10 +24,11 @@ def remove_file(path):
         os.remove(os.path.join(path, f))
 
 def predict(input_path, output_path):
+    print("segmentation", input_path, output_path)
     l = segment(input_path, output_path)
     lines = []
     for i in range(l):
-        path = './test/image{0}.jpg'.format(i)
+        path = './test/img_transformer{0}.jpg'.format(i)
         if os.path.exists(path):    
             img = Image.open(path)
             s = detector.predict(img)
@@ -38,6 +39,6 @@ def predict(input_path, output_path):
 
 def save_file(path, lines):
     with open(path, 'w') as f:
-        for line in lines: 
+        for line in reversed(lines): 
             f.write(line)
             f.write('\n')

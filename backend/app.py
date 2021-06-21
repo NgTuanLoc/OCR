@@ -5,12 +5,14 @@ import os
 import json
 
 from ocr.ocr import save_file, predict
+from ocr.test import predict_crnn
 
 import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-
 import requests
+import tensorflow.compat.v1.keras.backend as K
+
 
 # All the 1000 imagenet classes
 class_labels = 'imagenet_classes.json'
@@ -49,20 +51,38 @@ def upload_file():
 		if 'file' not in request.files:
 			return "No file part"
 		file = request.files['file']
-
+		
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			
+			_, temp = filename.split("_")
+			model, temp = temp.split(".")
+			print(model)
+			print(filename)
+			if(model=="transformer"):
 			# Send uploaded image for prediction
-			predicted_image_class = predict_img(UPLOAD_FOLDER+filename)
-			print("predicted_image_class", predicted_image_class)
+				predicted_image_class = predict_img(UPLOAD_FOLDER+filename)
+				print("predicted_image_class", predicted_image_class)
+			else:
+				print("hahaha")
+				predicted_image_class = predict_crnn()
+				print("predicted_image_class", predicted_image_class)
+
+		# if file and allowed_file(file.filename):
+		# 	filename = secure_filename(file.filename)
+		# 	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			
+		# 	# Send uploaded image for prediction
+		# 	predicted_image_class = predict_img_crnn()			
+		# 	print("predicted_image_class", predicted_image_class)
+		
 
 	return json.dumps(predicted_image_class)
 
 def predict_img(img_path):
 	output = './test'
-	lines = predict('data/img.png', output)
+	lines = predict('data/img_transformer.png', output)
 	print(img_path)
 	print("out", lines)
 	save_file('./result/result.txt', lines)
@@ -70,6 +90,9 @@ def predict_img(img_path):
 
 	return lines
 
+def predict_img_crnn():
+	return predict_crnn()
+
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, threaded=False)
