@@ -47,7 +47,7 @@ def segment(input_path, output_path):
         # print(i, height)
         
         
-        if(width>=max_width*0.1 and height>=max_height*0.8):
+        if(width>=max_width*0.1 and height>=max_height*0.7):
             # show ROI   
             cv2.imwrite('{0}/img_transformer{1}.jpg'.format(output_path, valid_img), roi)
             valid_img += 1

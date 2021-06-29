@@ -27,14 +27,14 @@ def predict(input_path, output_path):
     print("segmentation", input_path, output_path)
     l = segment(input_path, output_path)
     lines = []
-    for i in range(l):
+    for i in reversed(range(l)):
         path = './test/img_transformer{0}.jpg'.format(i)
         if os.path.exists(path):    
             img = Image.open(path)
             s = detector.predict(img)
             print(path, s)
             lines.append(s)
-    remove_file('./test')
+    # remove_file('./test')
     return lines
 
 def save_file(path, lines):

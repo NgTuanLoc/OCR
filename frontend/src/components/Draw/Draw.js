@@ -98,7 +98,7 @@ const Draw = () => {
           canvasWidth="1390px"
           canvasHeight="500px"
           ref={refCanvas}
-          brushColor="red"
+          brushColor="black"
         />
       </div>
     </Fragment>

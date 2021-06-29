@@ -65,19 +65,12 @@ def upload_file():
 				predicted_image_class = predict_img(UPLOAD_FOLDER+filename)
 				print("predicted_image_class", predicted_image_class)
 			else:
-				print("hahaha")
-				predicted_image_class = predict_crnn()
+				predicted_image_class = predict_crnn()				
 				print("predicted_image_class", predicted_image_class)
-
-		# if file and allowed_file(file.filename):
-		# 	filename = secure_filename(file.filename)
-		# 	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			
-		# 	# Send uploaded image for prediction
-		# 	predicted_image_class = predict_img_crnn()			
-		# 	print("predicted_image_class", predicted_image_class)
-		
-
+			test = "Cleaning image data"
+			print(test)
+			remove_file('./data')
+	
 	return json.dumps(predicted_image_class)
 
 def predict_img(img_path):
@@ -90,8 +83,9 @@ def predict_img(img_path):
 
 	return lines
 
-def predict_img_crnn():
-	return predict_crnn()
+def remove_file(path):
+	for f in os.listdir(path):
+		os.remove(os.path.join(path,f))
 
 
 if __name__ == "__main__":

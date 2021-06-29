@@ -32,7 +32,7 @@ const Feature = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("file", imageFile, "img_transformer.png");
-    
+
     let t0 = performance.now();
     axios.post("http://127.0.0.1:5000/upload", formData).then((res, data) => {
       data = res.data;
@@ -40,7 +40,9 @@ const Feature = () => {
       let t1 = performance.now();
       console.log(data);
       console.log(
-        "The time it took to predict the image " + (t1 - t0) + " milliseconds."
+        "The time Transformer model took to predict the image " +
+          (t1 - t0) +
+          " milliseconds."
       );
     });
   };
@@ -49,7 +51,7 @@ const Feature = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("file", imageFile, "img_crnn.png");
-    
+
     let t0 = performance.now();
     axios.post("http://127.0.0.1:5000/upload", formData).then((res, data) => {
       data = res.data;
@@ -57,7 +59,9 @@ const Feature = () => {
       let t1 = performance.now();
       console.log(data);
       console.log(
-        "The time it took to predict the image " + (t1 - t0) + " milliseconds."
+        "The time LSTM & Attention took to predict the image " +
+          (t1 - t0) +
+          " milliseconds."
       );
     });
   };
@@ -77,13 +81,23 @@ const Feature = () => {
         </div>
 
         {/* Button for sending image to backend */}
-        <div style={{margin: "1rem"}}>
-          <input type="submit" onClick={uploadTransformerHandler} className="btn" />
+        <div style={{ margin: "1rem" }}>
+          <input
+            type="submit"
+            onClick={uploadTransformerHandler}
+            className="btn"
+            value="Transformer"
+          />
         </div>
-        <div style={{margin: "1rem"}}>
-          <input type="submit" onClick={uploadCRNNHandler} className="btn" />
+        <div style={{ margin: "1rem" }}>
+          <input
+            type="submit"
+            onClick={uploadCRNNHandler}
+            className="btn"
+            value="LSTM & Attention"
+          />
         </div>
-        
+
         {/* Field for previewing the chosen image */}
         <div className="container--image">
           {previewImage && (
