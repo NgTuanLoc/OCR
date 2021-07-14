@@ -2,6 +2,8 @@
 
 We divide our Application into backend for managing user input image and giving out prediction. The other is frowned which represents user interface and receive their input
 
+You can dowload our pretrained [model](https://drive.google.com/drive/folders/1pgSICcELr0HFSaugtsaCfJA-WeRzAQP-?usp=sharing)
+
 ## Installation
 
 **A/ Go to backend folder and run this command to download package**
