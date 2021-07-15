@@ -4,6 +4,8 @@ We divide our Application into backend for managing user input image and giving 
 
 You can dowload our pretrained [model](https://drive.google.com/drive/folders/1pgSICcELr0HFSaugtsaCfJA-WeRzAQP-?usp=sharing)
 
+You can trained your own model with this [repo](https://github.com/NgTuanLoc/OCR_source_code) 
+
 ## Installation
 
 **A/ Go to backend folder and run this command to download package**
